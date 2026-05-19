@@ -1,9 +1,18 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi import HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import os
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 EQUITY_IMAGE_DIR = "images/equity/png"
 INDICES_IMAGE_DIR = "images/indices/png"
